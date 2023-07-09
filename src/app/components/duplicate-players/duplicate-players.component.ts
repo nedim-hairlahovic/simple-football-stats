@@ -11,8 +11,8 @@ import { PlayerService } from 'src/app/services/player.service';
   styleUrls: ['./duplicate-players.component.css']
 })
 export class DuplicatePlayersComponent implements OnInit {
-  sub!: Subscription;
   duplicatePlayers: DuplicatePlayer[] = [];
+  sub!: Subscription;
 
   constructor(private playerService: PlayerService, private router: Router) { }
 
@@ -22,7 +22,7 @@ export class DuplicatePlayersComponent implements OnInit {
 
   fetchPossibleDuplicatePlayers(): void {
     this.sub = this.playerService.getPossibleDuplicatePlayers().subscribe({
-      next: _crawlers => this.duplicatePlayers = _crawlers,
+      next: _players => this.duplicatePlayers = _players,
       error: err => console.log(err)
     });
   }

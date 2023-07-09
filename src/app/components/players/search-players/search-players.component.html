@@ -1,0 +1,31 @@
+<div class="row">
+    <div class="col-6">
+        <form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Search" [(ngModel)]="searchKeyword" [ngModelOptions]="{standalone: true}">
+            <button class="btn btn-outline-success" type="submit" (click)="search()">Search</button>
+        </form>
+    </div>
+</div>
+
+<div class="row mt-5" *ngIf="searchedPlayers.length > 0">
+    <div class="col">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">DOB</th>
+                    <th scope="col">Team</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let player of searchedPlayers">
+                    <td scope="row">{{ player.id }}</td>
+                    <td>{{ player.firstName }} {{ player.lastName }}</td>
+                    <td>{{ player.birthDate | date: 'dd.MM.yyyy' }}</td>
+                    <td>{{ player.team.fullName }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

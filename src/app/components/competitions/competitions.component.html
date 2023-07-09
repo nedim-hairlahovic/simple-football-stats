@@ -1,0 +1,64 @@
+<div class="row mt-5">
+    <div class="col-7">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Rank</th>
+                    <th scope="col">Age Category</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let competition of competitions">
+                    <td scope="row">{{ competition.id }}</td>
+                    <td>{{ competition.name }}</td>
+                    <td>{{ competition.rank }}</td>
+                    <td>{{ competition.ageCategory }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-5">
+        <form novalidate [formGroup]="addCompetitionForm">
+            <div class="form-group mb-2">
+                <label for="name"><span class="text-danger">*</span> Name:</label>
+                <input type="text" class="form-control" id="name" placeholder="Name" formControlName="name" [ngClass]="{'is-invalid': isInvalid('name') }">
+                <span class="invalid-feedback">
+                    <span *ngIf="this.addCompetitionForm.get('name')?.errors?.['required']">
+                        Please enter name.
+                    </span>
+                </span>
+            </div>
+
+            <div class="form-group mb-2">
+                <label for="rank"><span class="text-danger">*</span> Rank:</label>
+                <input type="number" class="form-control" id="rank" formControlName="rank" [ngClass]="{'is-invalid': isInvalid('rank') }">
+                <span class="invalid-feedback">
+                    <span *ngIf="this.addCompetitionForm.get('rank')?.errors?.['required']">
+                        Please enter rank.
+                    </span>
+                </span>
+            </div>
+
+            <div class="form-group mb-1">
+                <label for="ageCategory"><span class="text-danger">*</span> Age category:</label>
+                <select class="form-select" id="ageCategory" formControlName="ageCategory" [ngClass]="{'is-invalid': isInvalid('ageCategory')}">
+                    <option value="" disabled>Select category</option>
+                    <option value="{{ cat.key }}" *ngFor="let cat of ageCategories">{{ cat.name }}</option>
+                </select>
+                <span class="invalid-feedback">
+                    <span *ngIf="this.addCompetitionForm.get('ageCategory')?.errors?.['required']">
+                        *ngIf="city?.errors?.[ 'required'] ">
+                        Please select age category.
+                    </span>
+                </span>
+            </div>
+
+            <div class="text-end mb-2">
+                <!-- <button type="button" class="btn btn-link me-2" (click)="back()">Back</button> -->
+                <button type="submit" class="btn btn-primary" [disabled]="!addCompetitionForm.valid" (click)="submitForm()">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
