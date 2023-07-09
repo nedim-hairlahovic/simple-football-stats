@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 import { environment } from 'src/environments/environment';
 import { DuplicatePlayer } from '../models/duplicate-player';
-import { SearchPlayer } from '../models/player';
+import { Player, PlayerSeasonMatch, PlayerSeasonStats, SearchPlayer } from '../models/player';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +22,24 @@ export class PlayerService {
     params = params.set('name', keyword);
 
     return this.http.get<SearchPlayer[]>(`${this.publicBaseUrl}/search?${params.toString()}`);
+  }
+
+  getPlayer(id: number): Observable<Player> {
+    return this.http.get<Player>(`${this.publicBaseUrl}/${id}`);
+  }
+
+  getSeasonStats(id: number, season: string): Observable<PlayerSeasonStats[]> {
+    let params = new HttpParams();
+    params = params.set('season', season);
+    
+    return this.http.get<PlayerSeasonStats[]>(`${this.publicBaseUrl}/${id}/stats?${params.toString()}`);
+  }
+
+  getSeasonMatches(id: number, season: string): Observable<PlayerSeasonMatch[]> {
+    let params = new HttpParams();
+    params = params.set('season', season);
+    
+    return this.http.get<PlayerSeasonMatch[]>(`${this.publicBaseUrl}/${id}/matches?${params.toString()}`);
   }
 
   getPossibleDuplicatePlayers(): Observable<DuplicatePlayer[]> {

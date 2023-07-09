@@ -21,7 +21,9 @@
             <tbody>
                 <tr *ngFor="let player of searchedPlayers">
                     <td scope="row">{{ player.id }}</td>
-                    <td>{{ player.firstName }} {{ player.lastName }}</td>
+                    <td>
+                        <a [routerLink]="['/players/', player.id]">{{ player.firstName }} {{ player.lastName }}</a>
+                    </td>
                     <td>{{ player.birthDate | date: 'dd.MM.yyyy' }}</td>
                     <td>{{ player.team.fullName }}</td>
                 </tr>

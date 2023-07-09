@@ -1,0 +1,79 @@
+<div class="card" *ngIf="player">
+    <b class="card-header">Osnovni podaci</b>
+    <div class="card-body">
+        Name: {{ player.firstName }} {{ player.lastName }}
+        <br> Position: {{ player.position }}
+        <br> Detailed position: {{ player.detailPosition }}
+        <br> Team: {{ player.team.name }} ({{ player.shirtNumber }})
+        <br> Birth date: {{ player.birthDate | date: 'dd.MM.yyyy' }}
+        <br> Birth place: {{ player.birthPlace }}
+        <br> Citizenship: {{ player.citizenship }}
+    </div>
+</div>
+
+<div class="card mt-5" *ngIf="stats.length > 0">
+    <b class=" card-header ">Season Stats</b>
+    <div class="card-body ">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">Competition</th>
+                    <th scope="col">Appearances</th>
+                    <th scope="col">starting</th>
+                    <th scope="col">goals</th>
+                    <th scope="col">yellowCards</th>
+                    <th scope="col">redCards</th>
+                    <th scope="col">minutes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let data of stats">
+                    <td scope="row">{{ data.competition.name }}</td>
+                    <td>{{ data.stats.appearances }}</td>
+                    <td>{{ data.stats.starting }}</td>
+                    <td>{{ data.stats.goals }}</td>
+                    <td>{{ data.stats.yellowCards }}</td>
+                    <td>{{ data.stats.redCards }}</td>
+                    <td>{{ data.stats.minutes }}'</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="card mt-5" *ngIf="matches.length > 0">
+    <b class=" card-header">Season Matches</b>
+    <div class="card-body">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">Matchday</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Venue</th>
+                    <th scope="col">Team</th>
+                    <th scope="col">Opponent</th>
+                    <th scope="col">Result</th>
+                    <th scope="col">Goals</th>
+                    <th scope="col">YC</th>
+                    <th scope="col">RC</th>
+                    <th scope="col">Min</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let match of matches">
+                    <td>{{ match.round }}</td>
+                    <!-- <td>date</td> -->
+                    <td>{{ match.dateTime | date: 'dd.MM.yyyy' }}</td>
+                    <td>{{ match.venue }}</td>
+                    <td>{{ match.team.fullName }}</td>
+                    <td>{{ match.opponent.fullName }}</td>
+                    <td>{{ match.resultStr }}</td>
+                    <td>{{ match.goals !== 0 ? match.goals : "" }}</td>
+                    <td>{{ match.yellowCard?.minute }}</td>
+                    <td>{{ match.redCard?.minute }}</td>
+                    <td>{{ match.minutes !== 0 ? match.minutes + "'" : "" }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

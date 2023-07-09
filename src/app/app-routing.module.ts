@@ -5,10 +5,12 @@ import { DuplicatePlayersComponent } from './components/duplicate-players/duplic
 import { SearchPlayersComponent } from './components/players/search-players/search-players.component';
 import { CompetitionsComponent } from './components/competitions/competitions.component';
 import { CompetitionSeasonComponent } from './components/scraper/competition-season/competition-season.component';
+import { PlayerDetailsComponent } from './components/players/player-details/player-details.component';
 
 const routes: Routes = [
   { path: 'competitions', component: CompetitionsComponent },
   { path: 'players', component: SearchPlayersComponent },
+  { path: 'players/:id', component: PlayerDetailsComponent },
   { path: 'duplicate-players', component: DuplicatePlayersComponent },
   { path: 'scraper/competition-season', component: CompetitionSeasonComponent },
 ];

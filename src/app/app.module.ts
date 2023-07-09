@@ -11,6 +11,7 @@ import { SearchPlayersComponent } from './components/players/search-players/sear
 import { EditPlayerComponent } from './components/players/edit-player/edit-player.component';
 import { CompetitionsComponent } from './components/competitions/competitions.component';
 import { CompetitionSeasonComponent } from './components/scraper/competition-season/competition-season.component';
+import { PlayerDetailsComponent } from './components/players/player-details/player-details.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { CompetitionSeasonComponent } from './components/scraper/competition-sea
     SearchPlayersComponent,
     EditPlayerComponent,
     CompetitionsComponent,
-    CompetitionSeasonComponent
+    CompetitionSeasonComponent,
+    PlayerDetailsComponent
   ],
   imports: [
     CommonModule,
