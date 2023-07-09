@@ -10,6 +10,7 @@ import { DuplicatePlayersComponent } from './components/duplicate-players/duplic
 import { SearchPlayersComponent } from './components/players/search-players/search-players.component';
 import { EditPlayerComponent } from './components/players/edit-player/edit-player.component';
 import { CompetitionsComponent } from './components/competitions/competitions.component';
+import { CompetitionSeasonComponent } from './components/scraper/competition-season/competition-season.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { CompetitionsComponent } from './components/competitions/competitions.co
     DuplicatePlayersComponent,
     SearchPlayersComponent,
     EditPlayerComponent,
-    CompetitionsComponent
+    CompetitionsComponent,
+    CompetitionSeasonComponent
   ],
   imports: [
     CommonModule,

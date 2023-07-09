@@ -1,0 +1,49 @@
+<div class="card">
+    <h5 class="card-header">Competition Season Scraper</h5>
+    <div class="card-body">
+        <form novalidate [formGroup]="scaperForm">
+            <div class="form-group mb-1">
+                <label for="competitionId"><span class="text-danger">*</span> Competition:</label>
+                <select class="form-select" id="competitionId" formControlName="competitionId" [ngClass]="{'is-invalid': isInvalid('competitionId')}">
+                    <option value="" disabled>Select competition</option>
+                    <option value="{{ com.id }}" *ngFor="let com of competitions">{{ com.name }}</option>
+                </select>
+                <span class="invalid-feedback">
+                    <span *ngIf="this.scaperForm.get('competitionId')?.errors?.['required']">
+                        *ngIf="city?.errors?.[ 'required'] ">
+                        Please select competition.
+                    </span>
+                </span>
+            </div>
+
+            <div class="form-group mb-1">
+                <label for="seasonId"><span class="text-danger">*</span> Season:</label>
+                <select class="form-select" id="seasonId" formControlName="seasonId" [ngClass]="{'is-invalid': isInvalid('seasonId')}">
+                    <option value="" disabled>Select season</option>
+                    <option value="{{ season.id }}" *ngFor="let season of seasons">{{ season.name }}</option>
+                </select>
+                <span class="invalid-feedback">
+                    <span *ngIf="this.scaperForm.get('seasonId')?.errors?.['required']">
+                        *ngIf="city?.errors?.[ 'required'] ">
+                        Please select season.
+                    </span>
+                </span>
+            </div>
+
+            <div class="form-group mb-2">
+                <label for="url"><span class="text-danger">*</span> URL:</label>
+                <input type="text" class="form-control" id="url" placeholder="url" formControlName="url" [ngClass]="{'is-invalid': isInvalid('url') }">
+                <span class="invalid-feedback">
+                    <span *ngIf="this.scaperForm.get('url')?.errors?.['required']">
+                        Please enter URL.
+                    </span>
+                </span>
+            </div>
+
+            <div class="text-end mb-2">
+                <!-- <button type="button" class="btn btn-link me-2" (click)="back()">Back</button> -->
+                <button type="submit" class="btn btn-primary" [disabled]="!scaperForm.valid" (click)="submitForm()">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
