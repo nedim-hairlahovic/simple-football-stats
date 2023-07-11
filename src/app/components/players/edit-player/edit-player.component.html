@@ -1,1 +1,49 @@
-<p>edit-player works!</p>
+<div class="card">
+    <b class="card-header">Osnovni podaci</b>
+    <div class="card-body">
+        <form novalidate [formGroup]="playerForm">
+            <!-- <div class="form-group mb-2">
+            <label for="name"><span class="text-danger">*</span> Name:</label>
+            <input type="text" class="form-control" id="name" placeholder="Name" formControlName="name" [ngClass]="{'is-invalid': isInvalid('name') }">
+            <span class="invalid-feedback">
+                <span *ngIf="this.playerForm.get('name')?.errors?.['required']">
+                    Please enter name.
+                </span>
+            </span>
+        </div>
+
+        -->
+
+            <div class="form-group mb-1">
+                <label for="position"><span class="text-danger">*</span> Position:</label>
+                <select class="form-select" id="position" formControlName="position">
+                <option value="" disabled>Select position</option>
+                <option value="{{ pos.key }}" *ngFor="let pos of positions">{{ pos.name }}</option>
+            </select>
+            </div>
+
+            <div class="form-group mb-1">
+                <label for="detailPosition"><span class="text-danger">*</span> Detailed Position:</label>
+                <select class="form-select" id="detailPosition" formControlName="detailPosition">
+                <option value="" disabled>Select detailed position</option>
+                <option value="{{ pos.key }}" *ngFor="let pos of detailedPositions">{{ pos.name }}</option>
+            </select>
+            </div>
+
+            <div class="form-group mb-2">
+                <label for="birthDate"><span class="text-danger">*</span> Birth date:</label>
+                <input type="date" class="form-control" id="birthDate" formControlName="birthDate">
+            </div>
+
+            <div class="form-group mb-2">
+                <label for="birthPlace"><span class="text-danger">*</span> Birth place:</label>
+                <input type="text" class="form-control" id="birthPlace" formControlName="birthPlace">
+            </div>
+
+            <div class="text-end mb-2">
+                <!-- <button type="button" class="btn btn-link me-2" (click)="back()">Back</button> -->
+                <button type="submit" class="btn btn-primary" [disabled]="!playerForm.valid" (click)="submitForm()">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>

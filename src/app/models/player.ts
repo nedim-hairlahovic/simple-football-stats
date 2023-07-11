@@ -47,8 +47,8 @@ export interface PlayerSeasonMatch {
     resultStr: string;
     resultType: string;
     goals: number;
-    yellowCard: PlayerSeasonMatchEvent;
-    redCard: PlayerSeasonMatchEvent;
+    yellowCard?: PlayerSeasonMatchEvent;
+    redCard?: PlayerSeasonMatchEvent;
     minutes: number;
 }
 

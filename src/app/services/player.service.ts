@@ -28,6 +28,11 @@ export class PlayerService {
     return this.http.get<Player>(`${this.publicBaseUrl}/${id}`);
   }
 
+  updatePlayer(id: number, playerRequest: any): Observable<Player> {
+    const url = `${this.adminBaseUrl}/${id}`;
+    return this.http.put<Player>(url, playerRequest, { headers: this.headers });
+  }
+
   getSeasonStats(id: number, season: string): Observable<PlayerSeasonStats[]> {
     let params = new HttpParams();
     params = params.set('season', season);
@@ -52,6 +57,32 @@ export class PlayerService {
     params = params.set('duplicatePlayerId', duplicatePlayerId);
 
     return this.http.get<any>(`${this.adminBaseUrl}/duplicates/merge?${params.toString()}`);
+  }
+
+  getPositions(): any[] {
+    return [ 
+      { key: 'GOALKEEPER', name: 'GOALKEEPER'},
+      { key: 'DEFENDER', name: 'DEFENDER'},
+      { key: 'MIDFIELDER', name: 'MIDFIELDER'},
+      { key: 'FORWARD', name: 'FORWARD'}
+    ] as any[];
+  }
+
+  getDetailedPositions(): any[] {
+    return [ 
+      { key: 'CENTRE_BACK', name: 'CENTRE_BACK'},
+      { key: 'RIGHT_BACK', name: 'RIGHT_BACK'},
+      { key: 'LEFT_BACK', name: 'LEFT_BACK'},
+      { key: 'DEFENSIVE_MIDFIELD', name: 'DEFENSIVE_MIDFIELD'},
+      { key: 'CENTRAL_MIDFIELD', name: 'CENTRAL_MIDFIELD'},
+      { key: 'ATTACKING_MIDFIELD', name: 'ATTACKING_MIDFIELD'},
+      { key: 'RIGHT_MIDFIELD', name: 'RIGHT_MIDFIELD'},
+      { key: 'LEFT_MIDFIELD', name: 'LEFT_MIDFIELD'},
+      { key: 'RIGHT_WINGER', name: 'RIGHT_WINGER'},
+      { key: 'LEFT_WINGER', name: 'LEFT_WINGER'},
+      { key: 'SECOND_STRIKER', name: 'SECOND_STRIKER'},
+      { key: 'CENTRE_FORWARD', name: 'CENTRE_FORWARD'},
+    ] as any[];
   }
 
 }
